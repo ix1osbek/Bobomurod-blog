@@ -62,9 +62,13 @@ app.use(notFound);
 app.use(errorHandler);
 
 // DB ulash va serverni ishga tushirish
+console.log(process.env.PORT);
+
 connectDB().then(() => {
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, "0.0.0.0", () => {
-        logger.info(`🚀 Server ${PORT} portida ishlayapti`);
+        // logger.info(`🚀 Server ${PORT} portida ishlayapti`);
+        console.log("server ishga tushdi");
+        
     });
 });

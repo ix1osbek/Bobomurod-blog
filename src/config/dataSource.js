@@ -4,6 +4,9 @@ import logger from "./logger.js";
 
 dotenv.config();
 // dotenv.config({ path: '/root/ixlosware/.env' });
+
+console.log(process.env.MONGO_URI);
+
 export const connectDB = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI);
