@@ -15,8 +15,8 @@ import compression from "compression";
 import sitemapRoutes from "./routes/sitemap.js";
 import robotsRoutes from "./routes/robots.js";
 
-dotenv.config({ path: '/root/ixlosware/.env' })
-// dotenv.config()
+// dotenv.config({ path: '/root/ixlosware/.env' })
+dotenv.config()
 const app = express();
 
 // Middleware
@@ -33,21 +33,13 @@ const limiter = rateLimit({
 
 ////////////// cors
 
-const allowedOrigins = [
-    "http://localhost:3000",   // frontend local dev
-    "https://ixlosware.uz"        // production frontend domen
-]
-
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("CORS policy: ruxsat etilmagan manzil"));
-        }
+    origin: (origin, callback) => {
+        callback(null, true); // barcha domenlarga ruxsat
     },
-    credentials: true,
-}))
+    credentials: true
+}));
+
 app.use(express.json())
 app.use(requestLogger)
 app.use(limiter)
