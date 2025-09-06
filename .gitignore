@@ -1,0 +1,10 @@
+# node_modules papkasini GitHub’ga jo‘natmaslik
+node_modules/
+
+# Loglar
+logs/
+*.log
+
+# Environment fayllar
+.env
+.env.local
